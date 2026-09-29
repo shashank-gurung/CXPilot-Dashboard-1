@@ -1,5 +1,5 @@
 import { CxpIcon } from '@/components/cxp-icon';
-import type { Stat } from '@/data/mock-data';
+import type { DashboardStat } from '@workspace/api-client-react';
 
 const toneStyles = {
   indigo: { icon: 'bg-[#efedff] text-[#675bd5]', line: 'bg-[#6d62d9]' },
@@ -8,7 +8,7 @@ const toneStyles = {
   gold: { icon: 'bg-[#fbf1d7] text-[#b48b2d]', line: 'bg-[#d9b45d]' },
 };
 
-export function StatCard({ stat, index }: { stat: Stat; index: number }) {
+export function StatCard({ stat, index }: { stat: DashboardStat; index: number }) {
   const tone = toneStyles[stat.tone];
   return (
     <article className={`card-lift fade-up fade-up-delay-${index + 1} relative overflow-hidden rounded-[14px] border border-[#ebe8f1] bg-white p-5 shadow-[0_4px_15px_-13px_rgba(47,40,84,.25)]`} data-testid={`card-stat-${stat.label.toLowerCase().replaceAll(' ', '-')}`}>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { ArrowRight, Lightbulb } from 'lucide-react';
-import { insight } from '@/data/mock-data';
+import type { DashboardInsight } from '@workspace/api-client-react';
 
-export function AIInsightCard() {
+export function AIInsightCard({ insight }: { insight: DashboardInsight }) {
   const [expanded, setExpanded] = useState(false);
   return (
     <article className="fade-up fade-up-delay-4 relative overflow-hidden rounded-[14px] border border-[#dedaf5] bg-[#f0effc] p-5 shadow-[0_8px_24px_-18px_rgba(103,91,213,.35)] sm:p-6" data-testid="card-ai-insight">

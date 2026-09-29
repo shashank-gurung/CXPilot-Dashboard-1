@@ -1,5 +1,5 @@
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
-import { conversations } from '@/data/mock-data';
+import type { DashboardConversation } from '@workspace/api-client-react';
 
 const sentimentStyles = {
   Positive: 'bg-[#e4f5ee] text-[#3b987c]',
@@ -12,7 +12,7 @@ const statusStyles = {
   Open: 'bg-[#f1edff] text-[#675bd5]',
 };
 
-export function RecentConversations() {
+export function RecentConversations({ conversations }: { conversations: DashboardConversation[] }) {
   return (
     <section className="fade-up fade-up-delay-4 rounded-[14px] border border-[#ebe8f1] bg-white shadow-[0_4px_15px_-13px_rgba(47,40,84,.25)]" data-testid="section-recent-conversations">
       <div className="flex flex-col justify-between gap-3 border-b border-[#f0eef4] px-5 py-5 sm:flex-row sm:items-center sm:px-6">

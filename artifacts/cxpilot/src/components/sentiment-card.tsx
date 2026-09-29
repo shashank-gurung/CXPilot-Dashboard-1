@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 import { CxpIcon } from '@/components/cxp-icon';
-import { sentimentData } from '@/data/mock-data';
+import type { SentimentSeries } from '@workspace/api-client-react';
 
 const ranges = ['7 Days', '30 Days', '90 Days'] as const;
 
@@ -23,9 +23,10 @@ function ChartTooltip({ active, payload, label }: { active?: boolean; payload?: 
   );
 }
 
-export function SentimentCard() {
+export function SentimentCard({ sentiment }: { sentiment: SentimentSeries[] }) {
   const [range, setRange] = useState<(typeof ranges)[number]>('30 Days');
-  const data = sentimentData[range];
+  const selectedSeries = sentiment.find((series) => series.range === range);
+  const data = selectedSeries?.points ?? [];
   return (
     <article className="fade-up fade-up-delay-3 min-w-0 rounded-[14px] border border-[#ebe8f1] bg-white p-5 shadow-[0_4px_15px_-13px_rgba(47,40,84,.25)] sm:p-6" data-testid="card-customer-sentiment">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
@@ -60,10 +61,10 @@ export function SentimentCard() {
           </div>
         </div>
         <div className="grid grid-cols-3 gap-2 border-t border-[#f0eef4] pt-4 xl:block xl:border-l xl:border-t-0 xl:pl-5 xl:pt-0">
-          <div><div className="text-[10px] text-[#a39eaf]">Positive</div><div className="mt-1 text-[20px] font-extrabold tracking-[-.05em] text-[#6258cc]">65%</div></div>
-          <div className="border-l border-[#f0eef4] pl-3 xl:mt-6 xl:border-l-0 xl:border-t xl:pl-0 xl:pt-5"><div className="text-[10px] text-[#a39eaf]">Neutral</div><div className="mt-1 text-[20px] font-extrabold tracking-[-.05em] text-[#48a88b]">22%</div></div>
-          <div className="border-l border-[#f0eef4] pl-3 xl:mt-6 xl:border-l-0 xl:border-t xl:pl-0 xl:pt-5"><div className="text-[10px] text-[#a39eaf]">Negative</div><div className="mt-1 text-[20px] font-extrabold tracking-[-.05em] text-[#d98669]">13%</div></div>
-          <div className="col-span-3 mt-2 border-t border-[#f0eef4] pt-3 text-[10px] text-[#a39eaf] xl:mt-6">Total signals <strong className="ml-1 font-bold text-[#514b68]">1,248</strong></div>
+          <div><div className="text-[10px] text-[#a39eaf]">Positive</div><div className="mt-1 text-[20px] font-extrabold tracking-[-.05em] text-[#6258cc]">{selectedSeries?.positive ?? 0}%</div></div>
+          <div className="border-l border-[#f0eef4] pl-3 xl:mt-6 xl:border-l-0 xl:border-t xl:pl-0 xl:pt-5"><div className="text-[10px] text-[#a39eaf]">Neutral</div><div className="mt-1 text-[20px] font-extrabold tracking-[-.05em] text-[#48a88b]">{selectedSeries?.neutral ?? 0}%</div></div>
+          <div className="border-l border-[#f0eef4] pl-3 xl:mt-6 xl:border-l-0 xl:border-t xl:pl-0 xl:pt-5"><div className="text-[10px] text-[#a39eaf]">Negative</div><div className="mt-1 text-[20px] font-extrabold tracking-[-.05em] text-[#d98669]">{selectedSeries?.negative ?? 0}%</div></div>
+          <div className="col-span-3 mt-2 border-t border-[#f0eef4] pt-3 text-[10px] text-[#a39eaf] xl:mt-6">Total signals <strong className="ml-1 font-bold text-[#514b68]">{selectedSeries?.totalSignals ?? 0}</strong></div>
         </div>
       </div>
     </article>

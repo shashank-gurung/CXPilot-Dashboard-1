@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'wouter';
 import { CxpIcon } from '@/components/cxp-icon';
-import { navItems, utilityNavItems } from '@/data/mock-data';
+import { navItems, utilityNavItems } from '@/data/navigation';
 
 export function Sidebar({
   open,

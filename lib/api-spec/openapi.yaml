@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: dashboard
+    description: Customer experience dashboard operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /dashboard:
+    get:
+      operationId: getDashboard
+      tags: [dashboard]
+      summary: Get the customer experience dashboard
+      description: Returns dashboard metrics, sentiment series, AI insight, and recent conversations.
+      responses:
+        "200":
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardData"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +48,109 @@ components:
           type: string
       required:
         - status
+    DashboardStat:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+        delta:
+          type: string
+        context:
+          type: string
+        icon:
+          type: string
+        tone:
+          type: string
+          enum: [indigo, mint, peach, gold]
+      required: [label, value, delta, context, icon, tone]
+    SentimentPoint:
+      type: object
+      properties:
+        day:
+          type: string
+        positive:
+          type: number
+        neutral:
+          type: number
+        negative:
+          type: number
+      required: [day, positive, neutral, negative]
+    SentimentSeries:
+      type: object
+      properties:
+        range:
+          type: string
+          enum: ["7 Days", "30 Days", "90 Days"]
+        points:
+          type: array
+          items:
+            $ref: "#/components/schemas/SentimentPoint"
+        positive:
+          type: number
+        neutral:
+          type: number
+        negative:
+          type: number
+        totalSignals:
+          type: integer
+      required: [range, points, positive, neutral, negative, totalSignals]
+    DashboardInsight:
+      type: object
+      properties:
+        eyebrow:
+          type: string
+        title:
+          type: string
+        recommendation:
+          type: string
+        relatedCount:
+          type: string
+      required: [eyebrow, title, recommendation, relatedCount]
+    DashboardConversation:
+      type: object
+      properties:
+        id:
+          type: string
+        initials:
+          type: string
+        customer:
+          type: string
+        email:
+          type: string
+        message:
+          type: string
+        sentiment:
+          type: string
+          enum: [Positive, Neutral, Negative]
+        priority:
+          type: string
+          enum: [High, Medium, Low]
+        time:
+          type: string
+        status:
+          type: string
+          enum: [Open, Waiting, Resolved]
+        accent:
+          type: string
+      required: [id, initials, customer, email, message, sentiment, priority, time, status, accent]
+    DashboardData:
+      type: object
+      properties:
+        stats:
+          type: array
+          items:
+            $ref: "#/components/schemas/DashboardStat"
+        sentiment:
+          type: array
+          items:
+            $ref: "#/components/schemas/SentimentSeries"
+        insight:
+          $ref: "#/components/schemas/DashboardInsight"
+        conversations:
+          type: array
+          items:
+            $ref: "#/components/schemas/DashboardConversation"
+      required: [stats, sentiment, insight, conversations]
 
