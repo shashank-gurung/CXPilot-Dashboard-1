@@ -1,0 +1,344 @@
+Build a production-quality hackathon MVP called:
+
+CXPilot — AI Customer Experience Copilot
+
+I have attached a visual reference screenshot of the CXPilot dashboard.
+
+IMPORTANT:
+The screenshot is the PRIMARY visual reference for the UI.
+
+For this first stage, build ONLY:
+
+1. Application shell
+2. Sidebar
+3. Top navigation/header
+4. Dashboard page
+
+Do NOT build the other pages yet.
+
+==================================================
+TECH STACK
+==================================================
+
+Frontend:
+- React
+- Vite
+- React Router
+- Tailwind CSS
+- Recharts
+- Lucide React
+
+Backend:
+Do not implement backend functionality yet.
+
+Database:
+Do not connect Supabase yet.
+
+AI:
+Do not connect Gemini yet.
+
+For now use realistic local mock data.
+
+==================================================
+PRODUCT
+==================================================
+
+CXPilot is an AI-powered customer experience platform.
+
+It helps support teams:
+
+- understand customer conversations
+- detect sentiment
+- detect customer intent
+- identify customer emotion
+- determine priority
+- generate personalized responses
+- identify recurring customer problems
+- generate actionable business insights
+
+The product should look like a real premium SaaS product.
+
+It should NOT look like a generic admin dashboard.
+
+==================================================
+VISUAL DESIGN
+==================================================
+
+Recreate the provided screenshot closely.
+
+Use:
+
+- light/off-white background
+- white sidebar
+- indigo/purple primary accent
+- subtle lavender surfaces
+- clean borders
+- soft shadows
+- rounded cards
+- modern typography
+- generous spacing
+
+Use a modern font similar to Inter/Geist.
+
+Keep the interface:
+
+clean
+minimal
+professional
+premium
+easy to understand
+
+Avoid excessive:
+- gradients
+- glassmorphism
+- neon
+- glowing effects
+- animations
+
+==================================================
+SIDEBAR
+==================================================
+
+Create a reusable sidebar.
+
+Logo:
+
+CXPilot
+
+Navigation:
+
+Dashboard
+Customers
+Conversations
+AI Copilot
+AI Insights
+Analytics
+Settings
+
+Dashboard must be active.
+
+At the bottom:
+
+Alex Morgan
+alex@cxpilot.ai
+
+Use clean icons.
+
+The sidebar must become a reusable component for all future pages.
+
+==================================================
+TOP HEADER
+==================================================
+
+Create:
+
+Search or type command...
+
+Notification icon
+Help icon
+
+Dashboard controls:
+
+Last 30 Days
+
++ Analyze Conversation
+
+==================================================
+DASHBOARD HEADER
+==================================================
+
+Title:
+
+Good morning, Alex
+
+Subtitle:
+
+Here's what's happening with your customer experience today.
+
+==================================================
+STAT CARDS
+==================================================
+
+Create four cards:
+
+Total Customers
+1,248
++12.4%
+vs last month
+
+Active Conversations
+37
+-8.2%
+vs yesterday
+
+AI Resolution Rate
+84.6%
++6.8%
+Automated handling
+
+Customer Satisfaction
+92.4%
++3.2%
+CSAT Score
+
+Each card should include:
+- icon
+- metric
+- change
+- supporting text
+
+==================================================
+CUSTOMER SENTIMENT
+==================================================
+
+Create a large card:
+
+Customer Sentiment
+
+Real-time emotion & intent distribution across touchpoints
+
+Filters:
+
+7 Days
+30 Days
+90 Days
+
+30 Days active.
+
+Show:
+
+Positive 65%
+Neutral 22%
+Negative 13%
+
+1,248 total signals
+
+Use Recharts to create a clean smooth line/area chart.
+
+==================================================
+AI INSIGHT
+==================================================
+
+Create a visually distinctive AI Insight card.
+
+Text:
+
+"Delivery delays are responsible for 42% of negative customer conversations this week."
+
+Recommended Action:
+
+"Consider improving proactive delivery notifications and providing customers with real-time order updates."
+
+Button/link:
+
+View Insight →
+
+This should be one of the most visually distinctive elements on the dashboard.
+
+==================================================
+RECENT CONVERSATIONS
+==================================================
+
+Create a Recent Conversations section.
+
+Subtitle:
+
+Live streaming queue sorted by priority and sentiment
+
+Include realistic mock customers:
+
+Arjun Singh
+Priya Mehta
+Rahul Sharma
+Ananya Verma
+Rohan Kapoor
+
+Show:
+
+Customer
+Latest Message
+Sentiment
+Priority
+Time
+Status
+
+==================================================
+ROUTING
+==================================================
+
+Set up React Router.
+
+Routes:
+
+/dashboard
+/customers
+/conversations
+/ai-copilot
+/ai-insights
+/analytics
+/settings
+
+Only /dashboard needs a complete implementation now.
+
+The other routes can show a simple placeholder.
+
+==================================================
+COMPONENT ARCHITECTURE
+==================================================
+
+Do NOT put everything into one huge component.
+
+Use reusable components such as:
+
+AppLayout
+Sidebar
+TopHeader
+DashboardHeader
+StatCard
+SentimentCard
+AIInsightCard
+RecentConversations
+
+Keep mock data separate from UI components.
+
+==================================================
+RESPONSIVENESS
+==================================================
+
+Desktop:
+Match the screenshot.
+
+Tablet:
+Adapt the layout.
+
+Mobile:
+Stack cards vertically and collapse the sidebar into mobile navigation.
+
+Do not allow horizontal scrolling.
+
+==================================================
+IMPORTANT
+==================================================
+
+Do NOT:
+
+- connect Supabase
+- connect Gemini
+- create authentication
+- create backend APIs
+- use API keys
+- add unnecessary features
+
+Focus entirely on making the dashboard visually polished.
+
+The final result should feel like a commercial SaaS product.
+
+Before finishing:
+
+- make sure the app runs
+- fix console errors
+- make sure routing works
+- make sure the dashboard is responsive
+- make sure the chart renders
+- make sure buttons have hover states
+- make sure the UI closely matches the provided reference

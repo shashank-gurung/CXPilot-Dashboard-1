@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CXPilot"
+description = "A premium customer experience copilot dashboard for support teams to monitor sentiment, prioritize conversations, and act on AI-generated insights."
+version = "1.0.0"
+id = "artifacts/cxpilot"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22961
+
+[services.development]
+run = "pnpm --filter @workspace/cxpilot run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cxpilot", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cxpilot/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22961"
+BASE_PATH = "/"
